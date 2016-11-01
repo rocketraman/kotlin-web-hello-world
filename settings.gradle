@@ -1,3 +1,4 @@
+include 'akka'
 include 'common'
 include 'ktor'
 include 'vertx'

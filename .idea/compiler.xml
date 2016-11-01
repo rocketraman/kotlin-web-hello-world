@@ -20,6 +20,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="akka_main" target="1.8" />
+      <module name="akka_test" target="1.8" />
       <module name="common_main" target="1.8" />
       <module name="common_test" target="1.8" />
       <module name="ktor_main" target="1.8" />

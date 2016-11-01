@@ -40,6 +40,22 @@ configure(allprojects) {
   }
 }
 
+project("akka") {
+  apply plugin: 'application'
+
+  dependencies {
+    compile project(":common")
+    compile 'com.typesafe.akka:akka-http_2.11:3.0.0-RC1'
+  }
+
+  mainClassName = "benchmarks.http.akka.AkkaKt"
+  applicationName = "akka"
+
+  applicationDistribution.into("bin") {
+    fileMode = 0755
+  }
+}
+
 project("ktor") {
   apply plugin: 'application'
 
