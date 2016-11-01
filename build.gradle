@@ -79,9 +79,9 @@ project("ktor") {
 
   dependencies {
     compile project(":common")
-    compile 'com.github.Kotlin.ktor:ktor-core:96963b9824'
-    compile 'com.github.Kotlin.ktor:ktor-netty:96963b9824'
-    compile 'com.github.Kotlin.ktor:ktor-jetty:96963b9824'
+    compile 'com.github.Kotlin.ktor:ktor-core:master-SNAPSHOT'
+    compile 'com.github.Kotlin.ktor:ktor-netty:master-SNAPSHOT'
+    compile 'com.github.Kotlin.ktor:ktor-jetty:master-SNAPSHOT'
     compile 'org.javassist:javassist:3.21.0-GA'
 
     // TODO try http://netty.io/wiki/native-transports.html
@@ -129,13 +129,13 @@ project("wasabi") {
 
   repositories {
     maven {
-      url "http://dl.bintray.com/wasabifx/wasabifx"
+      url "https://jitpack.io"
     }
   }
 
   dependencies {
     compile project(":common")
-    compile 'org.wasabifx:wasabi:0.3.84'
+    compile 'com.github.wasabifx:wasabi:master-SNAPSHOT'
     compile 'org.javassist:javassist:3.21.0-GA'
   }
 
