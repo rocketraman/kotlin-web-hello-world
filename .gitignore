@@ -1,0 +1,17 @@
+.idea/modules/
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/tasks.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/dictionaries/
+.idea/libraries/Gradle__*.xml
+.gradle/
+gradle-app.setting
+build/
+target/
+.DS_Store

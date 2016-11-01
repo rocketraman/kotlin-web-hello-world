@@ -1,0 +1,119 @@
+buildscript {
+  ext {
+    kotlinVersion = '1.0.4'
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+  }
+}
+
+configure(allprojects) {
+  apply plugin: 'kotlin'
+
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+  repositories {
+    mavenCentral()
+    jcenter()
+  }
+
+  configurations {
+    all*.exclude group: 'ch.qos.logback'
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+    all*.exclude group: 'org.slf4j', module: 'slf4j-simple'
+  }
+
+  dependencies {
+    // language support
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    compile "org.jetbrains.kotlinx:kotlinx-support-jdk8:0.3"
+
+    // oi, logging http://logging.apache.org/log4j/2.x/faq.html#which_jars
+    compile 'org.apache.logging.log4j:log4j-core:2.6.2'
+    compile 'org.apache.logging.log4j:log4j-jcl:2.6.2'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.6.2'
+    compile 'org.apache.logging.log4j:log4j-jul:2.6.2'
+  }
+}
+
+project("ktor") {
+  apply plugin: 'application'
+
+  repositories {
+    maven {
+      url "https://jitpack.io"
+    }
+  }
+
+  dependencies {
+    compile project(":common")
+    compile 'com.github.Kotlin.ktor:ktor-core:e0ce1d614f'
+    compile 'com.github.Kotlin.ktor:ktor-netty:e0ce1d614f'
+    compile 'com.github.Kotlin.ktor:ktor-jetty:e0ce1d614f'
+    compile 'org.javassist:javassist:3.21.0-GA'
+  }
+
+  mainClassName = "org.jetbrains.ktor.jetty.DevelopmentHost"
+  applicationName = "ktor"
+
+  applicationDistribution.into("bin") {
+    fileMode = 0755
+  }
+
+  task ktorNettyScripts(type: CreateStartScripts) {
+    mainClassName = "org.jetbrains.ktor.netty.DevelopmentHost"
+    applicationName = "ktorNetty"
+    outputDir = new File(project.buildDir, 'scripts')
+    classpath = jar.outputs.files + project.configurations.runtime
+  }
+
+  applicationDistribution.into("bin") {
+    from(ktorNettyScripts)
+    fileMode = 0755
+  }
+}
+
+project("vertx") {
+  apply plugin: 'application'
+
+  dependencies {
+    compile project(":common")
+    compile 'io.vertx:vertx-web:3.3.3'
+    compile 'org.javassist:javassist:3.21.0-GA'
+  }
+
+  mainClassName = "benchmarks.http.vertx.VertXKt"
+  applicationName = "vertx"
+
+  applicationDistribution.into("bin") {
+    fileMode = 0755
+  }
+}
+
+project("wasabi") {
+  apply plugin: 'application'
+
+  repositories {
+    maven {
+      url "http://dl.bintray.com/wasabifx/wasabifx"
+    }
+  }
+
+  dependencies {
+    compile project(":common")
+    compile 'org.wasabifx:wasabi:0.3.84'
+    compile 'org.javassist:javassist:3.21.0-GA'
+  }
+
+  mainClassName = "benchmarks.http.wasabi.WasabiKt"
+  applicationName = "wasabi"
+
+  applicationDistribution.into("bin") {
+    fileMode = 0755
+  }
+}
+

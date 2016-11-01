@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%highlight{%d{DEFAULT} %-5level --- [%15.15thread] %-40.40logger{1.}: %msg%n%xEx}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=black, DEBUG=grey bold, TRACE=grey}"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Logger name="io.netty" level="info" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger>
+    <Logger name="org.eclipse.jetty" level="info" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger>
+    <Logger name="org.wasabifx" level="warn" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger>
+    <Root level="debug">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>

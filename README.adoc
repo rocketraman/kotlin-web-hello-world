@@ -1,0 +1,9 @@
+= Simple HTTP Benchmarks =
+
+== Client
+
+Example load test with `wrk`:
+
+```
+wrk -t6 -c200 -d30s --latency --timeout 2s http://localhost:8080/
+```
