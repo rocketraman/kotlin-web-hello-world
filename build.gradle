@@ -51,10 +51,12 @@ project("ktor") {
 
   dependencies {
     compile project(":common")
-    compile 'com.github.Kotlin.ktor:ktor-core:e0ce1d614f'
-    compile 'com.github.Kotlin.ktor:ktor-netty:e0ce1d614f'
-    compile 'com.github.Kotlin.ktor:ktor-jetty:e0ce1d614f'
+    compile 'com.github.Kotlin.ktor:ktor-core:96963b9824'
+    compile 'com.github.Kotlin.ktor:ktor-netty:96963b9824'
+    compile 'com.github.Kotlin.ktor:ktor-jetty:96963b9824'
     compile 'org.javassist:javassist:3.21.0-GA'
+
+    // TODO try http://netty.io/wiki/native-transports.html
   }
 
   mainClassName = "org.jetbrains.ktor.jetty.DevelopmentHost"
