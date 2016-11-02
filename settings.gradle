@@ -1,5 +1,6 @@
 include 'akka'
 include 'common'
 include 'ktor'
+include 'sparkjava'
 include 'vertx'
 include 'wasabi'
