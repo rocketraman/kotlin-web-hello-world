@@ -147,3 +147,18 @@ project("wasabi") {
   }
 }
 
+project("sparkjava") {
+  apply plugin: 'application'
+
+  dependencies {
+    compile project(":common")
+    compile 'com.sparkjava:spark-core:2.5.1'
+  }
+
+  mainClassName = "benchmarks.http.sparkajava.SparkajavaKt"
+  applicationName = "sparkajava"
+
+  applicationDistribution.into("bin") {
+    fileMode = 0755
+  }
+}
