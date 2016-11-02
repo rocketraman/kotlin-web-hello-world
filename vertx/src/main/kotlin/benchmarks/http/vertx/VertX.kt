@@ -1,5 +1,6 @@
 package benchmarks.http.vertx
 
+import benchmarks.http.common.HELLO_WORLD
 import io.vertx.core.Vertx
 
 fun main(args: Array<String>) {
@@ -12,7 +13,7 @@ fun main(args: Array<String>) {
     response.putHeader("content-type", "text/plain")
 
     // Write to the response and end it
-    response.end("Hello World!")
+    response.end(HELLO_WORLD)
   }
 
   server.listen(8080)

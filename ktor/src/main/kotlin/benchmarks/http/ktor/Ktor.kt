@@ -1,5 +1,6 @@
 package benchmarks.http.ktor
 
+import benchmarks.http.common.HELLO_WORLD
 import org.jetbrains.ktor.application.*
 import org.jetbrains.ktor.features.*
 import org.jetbrains.ktor.logging.*
@@ -12,7 +13,7 @@ class Ktor : ApplicationModule() {
 //    install(CallLogging)
     install(Routing) {
       get("/") {
-        call.respondText("Hello, World!")
+        call.respondText(HELLO_WORLD)
       }
     }
   }

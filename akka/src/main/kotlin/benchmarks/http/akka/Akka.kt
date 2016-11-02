@@ -10,6 +10,7 @@ import akka.http.javadsl.model.HttpResponse
 import akka.japi.function.Function
 import akka.stream.ActorMaterializer
 import akka.stream.javadsl.Sink
+import benchmarks.http.common.HELLO_WORLD
 
 val NOT_FOUND = HttpResponse.create().withStatus(404).withEntity("Unknown resource!")
 
@@ -23,9 +24,7 @@ fun main(args: Array<String>) {
     val uri = request.uri
     if (request.method() == HttpMethods.GET) {
       if (uri.path() == "/") {
-        HttpResponse.create()
-          .withEntity(ContentTypes.TEXT_PLAIN_UTF8,
-            "Hello world!")
+        HttpResponse.create().withEntity(ContentTypes.TEXT_PLAIN_UTF8, HELLO_WORLD)
       } else {
         NOT_FOUND
       }
