@@ -1,9 +1,43 @@
-= Simple HTTP Benchmarks =
+= Kotlin Web Frameworks Hello World =
 
-== Client
+This project shows how to do a web-based "Hello World!" with Kotlin in combination with various JVM-based
+web frameworks.
+
+Pull requests for new frameworks are welcome.
+
+== Hello World Benchmarking
+
+While a `Hello World!` is not a realistic production operation, it can be useful to benchmark it to get a
+basic idea of how well the framework operates, without complicating matters with other work. The results of
+this will essentially be a best case throughput and latency scenario for the benchmarked system.
 
 Example load test with `wrk`:
 
 ```
 wrk -t6 -c200 -d30s --latency --timeout 2s http://localhost:8080/
 ```
+
+will produce output like:
+
+```
+Running 30s test @ http://localhost:8080/
+  6 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.84ms   12.33ms 330.10ms   96.91%
+    Req/Sec    17.76k     5.01k   46.68k    73.58%
+  Latency Distribution
+     50%    1.32ms
+     75%    3.18ms
+     90%    5.90ms
+     99%   66.79ms
+  3180198 requests in 30.10s, 536.82MB read
+Requests/sec: 105663.06
+Transfer/sec:     17.84MB
+~
+```
+
+=== Useful References
+
+While not every framework here uses Jetty, the following reference may be useful for tuning your network stack:
+
+https://wiki.eclipse.org/Jetty/Howto/High_Load
