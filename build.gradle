@@ -162,3 +162,19 @@ project("sparkjava") {
     fileMode = 0755
   }
 }
+
+project("nanohttpd") {
+  apply plugin: 'application'
+
+  dependencies {
+    compile project(":common")
+    compile 'org.nanohttpd:nanohttpd:2.3.1'
+  }
+
+  mainClassName = "org.kotlin.community.web.helloworld.nanohttpd.NanohttpdKt"
+  applicationName = "nanohttpd"
+
+  applicationDistribution.into("bin") {
+    fileMode = 0755
+  }
+}
