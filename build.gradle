@@ -48,7 +48,7 @@ project("akka") {
     compile 'com.typesafe.akka:akka-http_2.11:3.0.0-RC1'
   }
 
-  mainClassName = "benchmarks.http.akka.AkkaKt"
+  mainClassName = "org.kotlin.community.web.helloworld.akka.AkkaKt"
   applicationName = "akka"
 
   applicationDistribution.into("bin") {
@@ -56,7 +56,7 @@ project("akka") {
   }
 
   task akkaHlScripts(type: CreateStartScripts) {
-    mainClassName = "benchmarks.http.akka.AkkaHighLevelKt"
+    mainClassName = "org.kotlin.community.web.helloworld.akka.AkkaHighLevelKt"
     applicationName = "akkaHl"
     outputDir = new File(project.buildDir, 'scripts')
     classpath = jar.outputs.files + project.configurations.runtime
@@ -116,7 +116,7 @@ project("vertx") {
     compile 'org.javassist:javassist:3.21.0-GA'
   }
 
-  mainClassName = "benchmarks.http.vertx.VertXKt"
+  mainClassName = "org.kotlin.community.web.helloworld.vertx.VertXKt"
   applicationName = "vertx"
 
   applicationDistribution.into("bin") {
@@ -139,7 +139,7 @@ project("wasabi") {
     compile 'org.javassist:javassist:3.21.0-GA'
   }
 
-  mainClassName = "benchmarks.http.wasabi.WasabiKt"
+  mainClassName = "org.kotlin.community.web.helloworld.wasabi.WasabiKt"
   applicationName = "wasabi"
 
   applicationDistribution.into("bin") {
@@ -155,7 +155,7 @@ project("sparkjava") {
     compile 'com.sparkjava:spark-core:2.5.1'
   }
 
-  mainClassName = "benchmarks.http.sparkajava.SparkajavaKt"
+  mainClassName = "org.kotlin.community.web.helloworld.sparkajava.SparkajavaKt"
   applicationName = "sparkajava"
 
   applicationDistribution.into("bin") {
