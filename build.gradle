@@ -68,6 +68,22 @@ project("akka") {
   }
 }
 
+project("fluent-http") {
+  apply plugin: 'application'
+
+  dependencies {
+    compile project(":common")
+    compile 'net.code-story:http:2.104'
+  }
+
+  mainClassName = "org.kotlin.community.web.helloworld.fluent_http.FluentHttpKt"
+  applicationName = "fluent-http"
+
+  applicationDistribution.into("bin") {
+    fileMode = 0755
+  }
+}
+
 project("ktor") {
   apply plugin: 'application'
 
