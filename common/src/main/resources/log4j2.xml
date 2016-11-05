@@ -15,6 +15,9 @@
     <Logger name="org.wasabifx" level="warn" additivity="false">
       <AppenderRef ref="Console"/>
     </Logger>
+    <Logger name="io.undertow " level="warn" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger>
     <Logger name="spark" level="info" additivity="false">
       <AppenderRef ref="Console"/>
     </Logger>
