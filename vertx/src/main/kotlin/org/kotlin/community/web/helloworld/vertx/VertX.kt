@@ -1,20 +1,20 @@
 package org.kotlin.community.web.helloworld.vertx
 
-import org.kotlin.community.web.helloworld.common.HELLO_WORLD
-import io.vertx.core.Vertx
+import io.vertx.core.*
+import io.vertx.ext.web.*
+import io.vertx.ext.web.handler.*
+import org.kotlin.community.web.helloworld.common.*
 
 fun main(args: Array<String>) {
   val vertx = Vertx.vertx()
-  val server = vertx.createHttpServer()
-  server.requestHandler { request ->
-
-    // This handler gets called for each request that arrives on the server
-    val response = request.response()
-    response.putHeader("content-type", "text/plain")
-
-    // Write to the response and end it
-    response.end(HELLO_WORLD)
+  val router = Router.router(vertx).apply {
+    get("/").handler { request ->
+      request.response().putHeader("content-type", "text/html").end(HELLO_WORLD);
+    }
+    get().handler(StaticHandler.create("public"))
   }
 
-  server.listen(8080)
+  vertx.createHttpServer().requestHandler {
+    router.accept(it)
+  }.listen(8080)
 }
