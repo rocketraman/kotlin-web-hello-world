@@ -194,3 +194,19 @@ project("nanohttpd") {
     fileMode = 0755
   }
 }
+
+project("undertow") {
+  apply plugin: 'application'
+
+  dependencies {
+    compile project(":common")
+    compile group: 'io.undertow', name: 'undertow-core', version: '1.4.3.Final'
+  }
+
+  mainClassName = "org.kotlin.community.web.helloworld.undertow.UndertowKt"
+  applicationName = "undertow"
+
+  applicationDistribution.into("bin") {
+    fileMode = 0755
+  }
+}
