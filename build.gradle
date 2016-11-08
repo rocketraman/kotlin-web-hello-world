@@ -95,9 +95,9 @@ project("ktor") {
 
   dependencies {
     compile project(":common")
-    compile 'com.github.Kotlin.ktor:ktor-core:master-SNAPSHOT'
-    compile 'com.github.Kotlin.ktor:ktor-netty:master-SNAPSHOT'
-    compile 'com.github.Kotlin.ktor:ktor-jetty:master-SNAPSHOT'
+    compile 'com.github.Kotlin.ktor:ktor-core:ktor-0.2.3'
+    compile 'com.github.Kotlin.ktor:ktor-netty:ktor-0.2.3'
+    compile 'com.github.Kotlin.ktor:ktor-jetty:ktor-0.2.3'
     compile 'org.javassist:javassist:3.21.0-GA'
 
     // TODO try http://netty.io/wiki/native-transports.html
