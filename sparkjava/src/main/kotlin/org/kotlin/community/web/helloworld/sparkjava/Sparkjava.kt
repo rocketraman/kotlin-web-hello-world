@@ -5,6 +5,6 @@ import spark.Spark.*
 
 fun main(args: Array<String>) {
   port(8080)
-  staticFileLocation("/public");
+  staticFileLocation("/public")
   get("/") { req, res -> HELLO_WORLD }
 }
